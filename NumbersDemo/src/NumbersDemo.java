@@ -6,7 +6,7 @@
  College: Northeast Lakeview
 
  *******************************************************************************/
-public class Main {
+public class NumbersDemo {
     public static void main(String[] args) {
 
         int varOne = 1;

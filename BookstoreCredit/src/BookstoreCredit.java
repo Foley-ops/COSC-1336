@@ -8,7 +8,7 @@ import java.util.Scanner;
  College: Northeast Lakeview
 
  *******************************************************************************/
-public class Main {
+public class BookstoreCredit {
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
@@ -19,7 +19,7 @@ public class Main {
         System.out.print("Enter GPA: ");
         double gpa = scanner.nextDouble();
 
-        System.out.println(bookstoreCreditMessage(name, gpa));
+        bookstoreCreditMessage(name, gpa);
     }
 
     public static String bookstoreCreditMessage(String name, double gpa) {
@@ -33,7 +33,7 @@ public class Main {
             System.out.println("Good job on your grades " + name);
 
         System.out.println("STUDENT: " + name + "\nGPA: " + gpa);
-        System.out.println(name + ", you get $" + (int)(gpa * 10) + " bookstore credits.");
+        System.out.println(name + ", you earned $" + (int)(gpa * 10) + " bookstore credits.");
 
         return null;
     }

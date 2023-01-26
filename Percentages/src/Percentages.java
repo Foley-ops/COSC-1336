@@ -1,4 +1,12 @@
-public class Main {
+/******************************************************************************
+ Programmer: Nicholas Foley
+ Date: 01/25/2023
+ Lab 3
+ Instructor: Dr. Rafael Azuaje
+ College: Northeast Lakeview
+
+ *******************************************************************************/
+public class Percentages {
     public static void main(String[] args) {
 
         double variableOne = 2.0;
