@@ -13,6 +13,7 @@ public class Percentages {
         double variableTwo = 5.0;
 
         System.out.println(computerPercent(variableOne, variableTwo));
+        System.out.println(computerPercent(variableTwo, variableOne));
     }
 
     public static String computerPercent(double firstNumber, double secondNumber) {
