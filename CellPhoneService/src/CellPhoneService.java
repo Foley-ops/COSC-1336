@@ -20,12 +20,12 @@ public class CellPhoneService {
         System.out.print("Data used (Gigabytes): ");
         double dataUsage = scanner.nextDouble();
 
-        String recommendedPlan = (recommendedPlan(talkMinutes, textMessages, dataUsage));
+        String recommendedPlan = (getRecommendedPlan(talkMinutes, textMessages, dataUsage));
 
         System.out.println("We recommend " + recommendedPlan + " a month.");
     }
 
-    public static String recommendedPlan(double talkMinutes, int textMessages, double dataUsage) {
+    private static String getRecommendedPlan(double talkMinutes, int textMessages, double dataUsage) {
 
         if (talkMinutes < 500 && textMessages == 0 && dataUsage == 0)
             return("Plan A for $49");
