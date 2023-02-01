@@ -42,29 +42,17 @@ public class Pay {
     private static double getHourlyPay(int skillLevel) {
         double hourlyRate;
 
-        if (skillLevel == 1)
-            hourlyRate = 17.00;
+        if (skillLevel == 1) return 17.00;
+        else if (skillLevel == 2) return 20.00;
+        else if (skillLevel == 3) return 22.00;
+        return 0;
 
-        else if (skillLevel == 2)
-            hourlyRate =  20.00;
-
-        else if (skillLevel == 3)
-            hourlyRate =  22.00;
-
-        else
-            return 0;
-
-        return hourlyRate;
     }
 
     private static double getOvertime(double hourlyRate, int hoursWorked) {
 
-        if (hoursWorked > 40) {
-            return (((hoursWorked - 40) * hourlyRate) * 1.5);
-        }
-        else
-            return 0;
-
+        if (hoursWorked <= 40) return 0;
+        return (((hoursWorked - 40) * hourlyRate) * 1.5);
 
     }
 
@@ -72,10 +60,10 @@ public class Pay {
         Scanner scanner = new Scanner(System.in);
         double overtime = getOvertime(getHourlyPay(skillLevel), hoursWorked);
         double totalPay = ((getHourlyPay(skillLevel) * 40) + overtime);
-        boolean medicalBoolean;
-        boolean dentalBoolean;
-        boolean disabilityBoolean;
-        boolean retirementBoolean;
+        boolean medicalBoolean = false;
+        boolean dentalBoolean = false;
+        boolean disabilityBoolean = false;
+        boolean retirementBoolean = false;
         double totalDeduction = 0;
 
         if (skillLevel == 2 || skillLevel == 3) {
@@ -96,8 +84,6 @@ public class Pay {
             medicalBoolean = true;
             totalDeduction += 32.50;
         }
-        else
-            medicalBoolean = false;
 
         System.out.print("Would you like Dental insurance?(y/n)");
         String dentalInsurance = scanner.nextLine().toLowerCase();
@@ -105,8 +91,6 @@ public class Pay {
             dentalBoolean = true;
             totalDeduction += 20.00;
         }
-        else
-            dentalBoolean = false;
 
         System.out.print("Would you like Long-term disability insurance?(y/n)");
         String disabilityInsurance = scanner.nextLine().toLowerCase();
@@ -114,8 +98,6 @@ public class Pay {
             disabilityBoolean = true;
             totalDeduction += 10.00;
         }
-        else
-            disabilityBoolean = false;
 
         if (skillLevel == 3) {
             System.out.println("Would you like to put money into retirement?(y/n)");
@@ -124,12 +106,7 @@ public class Pay {
                 retirementBoolean = true;
                 totalDeduction += (totalPay * .03);
             }
-            else
-                retirementBoolean = false;
-
         }
-        else
-            retirementBoolean = false;
 
         totalDeductions(medicalBoolean, dentalBoolean, disabilityBoolean, retirementBoolean);
 
@@ -139,25 +116,10 @@ public class Pay {
     private static void totalDeductions(boolean medical, boolean dental, boolean disability, boolean retirement) {
         String listOfDeductions = "";
 
-        if (medical)
-            listOfDeductions += "Medical Insurance ";
-        else
-            listOfDeductions += "";
-
-        if (dental)
-            listOfDeductions += "Dental Insurance ";
-        else
-            listOfDeductions += "";
-
-        if (disability)
-            listOfDeductions += "Disability Insurance ";
-        else
-            listOfDeductions += "";
-
-        if (retirement)
-            listOfDeductions += "Retirement Plan";
-        else
-            listOfDeductions += "";
+        listOfDeductions += medical ? "Medical Insurance\n" : "";
+        listOfDeductions += dental ? "Dental Insurance\n" : "";
+        listOfDeductions += disability ? "Disability Insurance\n" : "";
+        listOfDeductions += retirement ? "Retirement Plan\n" : "";
 
         System.out.println("Elections made:");
         System.out.println(listOfDeductions);;
