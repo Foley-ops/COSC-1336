@@ -36,6 +36,9 @@ public class Pay {
 
     }
     private static double getActualPay(double hourlyRate, int hoursWorked) {
+        if (hoursWorked < 0) {
+            return 0;
+        }
         double actualPay = hourlyRate * hoursWorked;
         return actualPay;
     }
