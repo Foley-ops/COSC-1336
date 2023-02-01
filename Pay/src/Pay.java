@@ -32,7 +32,9 @@ public class Pay {
             return 0;
     }
     private static double getInsuranceOptions(int skillLevel) {
+        Scanner scanner = new Scanner(System.in);
 
+        double totalInsuranceCost;
         if (skillLevel == 2 || skillLevel == 3) {
             System.out.println("""
                     INSURANCE OPTIONS
@@ -40,11 +42,14 @@ public class Pay {
                     1.) Medical insurance
                     2.) Dental insurance
                     3.) Long-term disability insurance""");
-            System.out.println("What insurance option(s) would you like?");
-            return 5;
         }
         else
             return 0;
+
+        System.out.print("Would you like Medical insurance?(y/n)");
+        boolean medicalInsurance = scanner.nextBoolean();
+
+
 
     }
 
