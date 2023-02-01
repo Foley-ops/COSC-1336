@@ -1,0 +1,32 @@
+import java.util.Scanner;
+
+/******************************************************************************
+ Programmer: Nicholas Foley
+ Date: 02/01/2023
+ Lab 5
+ Instructor: Dr. Rafael Azuaje
+ College: Northeast Lakeview
+ *******************************************************************************/
+public class Pay {
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter skill level: ");
+        int skillLevel = scanner.nextInt();
+
+
+    }
+    private static double getPay(int skillLevel) {
+        if (skillLevel == 1)
+            return 17.00;
+
+        else if (skillLevel == 2)
+            return 20.00;
+
+        else if (skillLevel == 3)
+            return 22.00;
+
+        else
+            return 0;
+    }
+}
