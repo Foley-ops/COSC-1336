@@ -14,9 +14,11 @@ public class Pay {
         System.out.print("Enter skill level: ");
         int skillLevel = scanner.nextInt();
 
+        System.out.println("Hourly pay is $" + getHourlyPay(skillLevel));
+        System.out.println(getInsuranceOptions(skillLevel));
 
     }
-    private static double getPay(int skillLevel) {
+    private static double getHourlyPay(int skillLevel) {
         if (skillLevel == 1)
             return 17.00;
 
@@ -29,4 +31,21 @@ public class Pay {
         else
             return 0;
     }
+    private static double getInsuranceOptions(int skillLevel) {
+
+        if (skillLevel == 2 || skillLevel == 3) {
+            System.out.println("""
+                    INSURANCE OPTIONS
+                    ~~~~~~~~~~~~~~~~~
+                    1.) Medical insurance
+                    2.) Dental insurance
+                    3.) Long-term disability insurance""");
+            System.out.println("What insurance option(s) would you like?");
+            return 5;
+        }
+        else
+            return 0;
+
+    }
+
 }
