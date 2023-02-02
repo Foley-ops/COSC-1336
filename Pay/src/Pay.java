@@ -10,7 +10,6 @@ import java.util.Scanner;
 public class Pay {
     public static void main(String[] args) {
 
-
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter skill level: ");
         int skillLevel = scanner.nextInt();
@@ -23,13 +22,13 @@ public class Pay {
         double netPay = ((actualPay + overtime) - totalDeductions);
 
         System.out.println("Hours worked: " + hoursWorked);
-        System.out.println("Hourly pay: " + getHourlyPay(skillLevel));
-        System.out.println("Normal pay: " + getHourlyPay(skillLevel) * 40);
-        System.out.println("Overtime pay: " + overtime);
-        System.out.println("Total pay: " + (actualPay + overtime));
-        System.out.println("Total deductions: " + totalDeductions);
+        System.out.println("Hourly pay: $" + getHourlyPay(skillLevel));
+        System.out.println("Normal pay: $" + getHourlyPay(skillLevel) * 40);
+        System.out.println("Overtime pay: $" + overtime);
+        System.out.println("Total pay: $" + (actualPay + overtime));
+        System.out.println("Total deductions: $" + totalDeductions);
         if (netPay >= 0)
-            System.out.println("Net pay: " + netPay);
+            System.out.println("Net pay: $" + netPay);
         else
             System.out.println("Error!  You don't have enough money!");
 
@@ -39,8 +38,8 @@ public class Pay {
         if (hoursWorked < 0) {
             return 0;
         }
-        double actualPay = hourlyRate * hoursWorked;
-        return actualPay;
+        return (hourlyRate * hoursWorked);
+
     }
     private static double getHourlyPay(int skillLevel) {
         double hourlyRate;
@@ -49,14 +48,11 @@ public class Pay {
         else if (skillLevel == 2) return 20.00;
         else if (skillLevel == 3) return 22.00;
         return 0;
-
     }
-
     private static double getOvertime(double hourlyRate, int hoursWorked) {
 
         if (hoursWorked <= 40) return 0;
         return (((hoursWorked - 40) * hourlyRate) * 1.5);
-
     }
 
     private static double getDeductions(int skillLevel, int hoursWorked) {
@@ -103,7 +99,7 @@ public class Pay {
         }
 
         if (skillLevel == 3) {
-            System.out.println("Would you like to put money into retirement?(y/n)");
+            System.out.print("Would you like to put money into retirement?(y/n)");
             String retirementPlan = scanner.nextLine().toLowerCase();
             if (retirementPlan.equals("y")) {
                 retirementBoolean = true;
