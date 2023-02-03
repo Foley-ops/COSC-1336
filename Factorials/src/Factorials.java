@@ -12,7 +12,7 @@ public class Factorials {
             for (int j = 1; j <= i; j++) {
                 factorial *= j;
             }
-            System.out.println(i + "! = " + factorial);
+            System.out.println(i + " = " + factorial);
 
         }
     }
