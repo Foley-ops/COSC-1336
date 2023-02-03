@@ -46,14 +46,14 @@ public class Pay {
 
     }
     private static double getHourlyPay(int skillLevel) {
-
+        // Takes skillLevel and assigns the hourly rate
         if (skillLevel == 1) return 17.00;
         else if (skillLevel == 2) return 20.00;
         else if (skillLevel == 3) return 22.00;
         return 0;
     }
     private static double getOvertime(double hourlyRate, int hoursWorked) {
-
+        // Takes inputs and calculates overtime without the normal pay
         if (hoursWorked <= 40) return 0;
         return (((hoursWorked - 40) * hourlyRate) * 1.5);
     }
@@ -68,6 +68,7 @@ public class Pay {
         boolean retirementBoolean = false;
         double totalDeduction = 0;
 
+        // Gives options for insurance, only allows skillLevel 2 and 3
         if (skillLevel == 2 || skillLevel == 3) {
             System.out.println("INSURANCE OPTIONS\n" +
                     "~~~~~~~~~~~~~~~~~\n" +
@@ -116,6 +117,7 @@ public class Pay {
     }
 
     private static void totalDeductions(boolean medical, boolean dental, boolean disability, boolean retirement) {
+        // Method takes boolean values from getDeductions method and prints deductions
         String listOfDeductions = "";
 
         listOfDeductions += medical ? "Medical Insurance\n" : "";
