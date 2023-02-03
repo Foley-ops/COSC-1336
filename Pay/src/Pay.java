@@ -16,14 +16,15 @@ public class Pay {
 
         System.out.print("Enter hours worked: ");
         int hoursWorked = scanner.nextInt();
+        double hourlyRate = getHourlyPay(skillLevel);
         double actualPay = getActualPay(getHourlyPay(skillLevel), hoursWorked);
         double overtime =getOvertime(getHourlyPay(skillLevel), hoursWorked);
         double totalDeductions = getDeductions(skillLevel, hoursWorked);
         double netPay = ((actualPay + overtime) - totalDeductions);
 
         System.out.println("Hours worked: " + hoursWorked);
-        System.out.println("Hourly pay: $" + getHourlyPay(skillLevel));
-        System.out.println("Normal pay: $" + getHourlyPay(skillLevel) * 40);
+        System.out.println("Hourly pay: $" + hourlyRate);
+        System.out.println("Normal pay: $" + hourlyRate * 40);
         System.out.println("Overtime pay: $" + overtime);
         System.out.println("Total pay: $" + (actualPay + overtime));
         System.out.println("Total deductions: $" + totalDeductions);
