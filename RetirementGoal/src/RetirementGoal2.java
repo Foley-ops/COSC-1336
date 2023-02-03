@@ -45,14 +45,17 @@ public class RetirementGoal2 {
         System.out.println("After " +  years + " years you will have " + retirementSavings + ".");
 
     }
-    private static double getInterest(int years, double annualSavings) {
-        final double interest = .05;
+    private static double getInterest(int years, final double annualSavings) {
+        double interest = .05;
+        double totalSavingsWithInterest = annualSavings;
 
-        // for each yeat inbetween "now" and retirement, calculate interest and add to annualSavings
+        // for each year inbetween "now" and retirement, calculate interest and add to annualSavings
         for (int currentYear = 1; currentYear < years; currentYear++){
-            annualSavings = annualSavings + (interest * annualSavings);
+            totalSavingsWithInterest += annualSavings + (totalSavingsWithInterest * interest);
+            System.out.println(totalSavingsWithInterest);
+            
         }
         // Returns calculated savings with interest
-        return annualSavings;
+        return totalSavingsWithInterest;
     }
 }
