@@ -9,11 +9,13 @@ import java.util.Scanner;
  *******************************************************************************/
 public class Pay {
     public static void main(String[] args) {
-
         Scanner scanner = new Scanner(System.in);
+
+        // Input skill level
         System.out.print("Enter skill level: ");
         int skillLevel = scanner.nextInt();
 
+        // Input hours worked
         System.out.print("Enter hours worked: ");
         int hoursWorked = scanner.nextInt();
         double hourlyRate = getHourlyPay(skillLevel);
@@ -22,6 +24,7 @@ public class Pay {
         double totalDeductions = getDeductions(skillLevel, hoursWorked);
         double netPay = ((actualPay + overtime) - totalDeductions);
 
+        // Output hours worked, hourly pay, normal pay, overtime pay, total pay, total deductions, and net pay
         System.out.println("Hours worked: " + hoursWorked);
         System.out.println("Hourly pay: $" + hourlyRate);
         System.out.println("Normal pay: $" + hourlyRate * 40);
@@ -43,7 +46,6 @@ public class Pay {
 
     }
     private static double getHourlyPay(int skillLevel) {
-        double hourlyRate;
 
         if (skillLevel == 1) return 17.00;
         else if (skillLevel == 2) return 20.00;
@@ -67,12 +69,12 @@ public class Pay {
         double totalDeduction = 0;
 
         if (skillLevel == 2 || skillLevel == 3) {
-            System.out.println("""
-                    INSURANCE OPTIONS
-                    ~~~~~~~~~~~~~~~~~
-                    Medical insurance $ 32.50
-                    Dental insurance $ 20.00
-                    Long-term disability insurance $ 10.00""");
+            System.out.println("INSURANCE OPTIONS\n" +
+                    "~~~~~~~~~~~~~~~~~\n" +
+                    "Medical insurance $ 32.50\n" +
+                    "Dental insurance $ 20.00\n" +
+                    "Long-term disability insurance $ 10.00\n" +
+                    "~~~~~~~~~~~~~~~~~\n");
         }
         else {
             return 0;
@@ -122,7 +124,8 @@ public class Pay {
         listOfDeductions += retirement ? "Retirement Plan\n" : "";
 
         System.out.println("Elections made:");
-        System.out.println(listOfDeductions);;
+        System.out.println(listOfDeductions);
+        System.out.println("~~~~~~~~~~~~~~~~~");
 
     }
 }
