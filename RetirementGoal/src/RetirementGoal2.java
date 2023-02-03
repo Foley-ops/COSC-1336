@@ -11,6 +11,7 @@ import java.util.Scanner;
 public class RetirementGoal2 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        // Formatter to give correct output, defaultFormat is in US currency
         NumberFormat defaultFormat = NumberFormat.getCurrencyInstance();
 
         // Takes input for years until retirement
@@ -26,15 +27,32 @@ public class RetirementGoal2 {
         // Takes input for how much money can be saved annually
         System.out.print("How much money can you save annually? ");
         double annualSavings = scanner.nextDouble();
-
+        // Error handling for annualSavings
         while (annualSavings <= 0) {
             System.out.println("Please enter a positive integer.\n");
             System.out.print("How much money can you save annually? ");
             annualSavings = scanner.nextInt();
         }
+        
+        scanner.close();
 
-        String retirementSavings = defaultFormat.format(years * annualSavings);
+        double savingsWithInterest = getInterest(years, annualSavings);
 
+        // Formats double to string in currency format
+        String retirementSavings = defaultFormat.format(savingsWithInterest);
+
+        // Normal string concatenation
         System.out.println("After " +  years + " years you will have " + retirementSavings + ".");
+
+    }
+    private static double getInterest(int years, double annualSavings) {
+        final double interest = .05;
+
+        // for each yeat inbetween "now" and retirement, calculate interest and add to annualSavings
+        for (int currentYear = 1; currentYear < years; currentYear++){
+            annualSavings = annualSavings + (interest * annualSavings);
+        }
+        // Returns calculated savings with interest
+        return annualSavings;
     }
 }
