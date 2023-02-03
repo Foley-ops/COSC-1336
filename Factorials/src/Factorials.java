@@ -1,11 +1,19 @@
+/******************************************************************************
+ Programmer: Nicholas Foley
+ Date: 02/03/2023
+ Lab 5
+ Instructor: Dr. Rafael Azuaje
+ College: Northeast Lakeview
+ *******************************************************************************/
 public class Factorials {
     public static void main(String[] args) {
-        for (int i = 0; i <= 10; i++) {
-            int factorial = 1;
-            for (int j = 0; j >0; j--) {
+        for (int i = 1; i <= 10; i++) {
+            long factorial = 1L;
+            for (int j = 1; j <= i; j++) {
                 factorial *= j;
             }
-            System.out.println(i + "!=" + factorial);
+            System.out.println(i + "! = " + factorial);
+
         }
     }
 }
