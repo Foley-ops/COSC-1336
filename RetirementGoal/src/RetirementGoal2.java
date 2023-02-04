@@ -52,8 +52,6 @@ public class RetirementGoal2 {
         // for each year inbetween "now" and retirement, calculate interest and add to annualSavings
         for (int currentYear = 1; currentYear < years; currentYear++){
             totalSavingsWithInterest += annualSavings + (totalSavingsWithInterest * interest);
-            System.out.println(totalSavingsWithInterest);
-            
         }
         // Returns calculated savings with interest
         return totalSavingsWithInterest;
