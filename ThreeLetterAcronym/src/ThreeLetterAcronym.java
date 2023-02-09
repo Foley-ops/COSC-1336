@@ -14,15 +14,18 @@ public class ThreeLetterAcronym {
 
     public static String getAcronym(String userInput) {
         String returnStatement = "";
+        int wordCount = 1;
         returnStatement += userInput.charAt(0);
 
         for (int i = 0; i < userInput.length(); i++) {
-            if (i < 3 && userInput.charAt(i) == ' ') {
+            if (wordCount < 4 && userInput.charAt(i) == ' ') {
+                wordCount++;
 
-            } else if (i < 3 && userInput.charAt(i) != ' ') {
+            } else if (wordCount < 4 && userInput.charAt(i) != ' ') {
                 returnStatement += userInput.charAt(i);
-                i++;
             }
+            else
+                System.out.println("ERROR");
         }
         return returnStatement;
     }
