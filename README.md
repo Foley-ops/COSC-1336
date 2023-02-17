@@ -22,4 +22,4 @@ As this is a personal repository, contributions are not needed. However, if you 
 
 ### Contact
 
-If you have any questions or concerns about this repository, please contact Nick at nickmfoley@gmail.com.
+If you have any questions or concerns about this repository, please contact me at nickmfoley@gmail.com.
