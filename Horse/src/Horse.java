@@ -11,7 +11,39 @@ class. Save the files as Horse.java, RaceHorse.java, and DemoHorses.java*/
  College: Northeast Lakeview College
  *******************************************************************************/
 public class Horse {
-    public static void main(String[] args) {
-        System.out.println("Hello world!");
+   private String name;
+   private String color;
+   private int birthYear;
+   
+    public Horse(String name, String color, int birthYear) {
+        this.name = name;
+        this.color = color;
+        this.birthYear = birthYear;
     }
+   
+    // Getters and Setters 
+    public String getName() {
+        return name;
+    }
+    
+    public void setName(String name) {
+      this.name = name;
+    }
+    
+    public String getColor() {
+        return color;
+    }
+    
+    public void setColor(String color) {
+      this.color = color;
+    }
+    
+    public int getBirthYear(){
+        return birthYear;
+    }
+    
+    public void setBirthYear(int birthYear){
+        this.birthYear = birthYear;
+    }
+
 }
