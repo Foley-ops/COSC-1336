@@ -5,10 +5,13 @@
  Instructor: Dr. Rafael Azuaje
  College: Northeast Lakeview College
  *******************************************************************************/
-public class RaceHorse extends Horse {
+/*This class provides numberOfRaces in addition to name, color, and birthYear from
+ the "Horse" class*/
+ public class RaceHorse extends Horse {
     private int numberOfRaces;
 
     public RaceHorse(String name, String color, int birthYear, int numberOfRaces) {
+      // superclass constructor - takes info from "Horse" and uses it here
         super(name, color, birthYear);
         this.numberOfRaces = numberOfRaces;
     }

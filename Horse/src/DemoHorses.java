@@ -5,9 +5,12 @@
  Instructor: Dr. Rafael Azuaje
  College: Northeast Lakeview College
  *******************************************************************************/
-public class DemoHorses {
+// public class with main method containing code to demonstrate usage of classes
+ public class DemoHorses {
   public static void main(String[] args) {
+    // Uses only the "Horse" class
       Horse horse1 = new Horse("Jet", "Black", 2018);
+      // Uses the "RaceHorse" class, which also uses the object "Horse"
       RaceHorse horse2 = new RaceHorse("Lightning", "White", 2021, 12);
       
       System.out.println("Horse 1:");
