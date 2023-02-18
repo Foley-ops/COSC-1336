@@ -10,11 +10,13 @@ class. Save the files as Horse.java, RaceHorse.java, and DemoHorses.java*/
  Instructor: Dr. Rafael Azuaje
  College: Northeast Lakeview College
  *******************************************************************************/
-public class Horse {
+// Class to define parameters of a Horse
+ public class Horse {
    private String name;
    private String color;
    private int birthYear;
-   
+
+   // Constructor with parameters that can be used outside of class
     public Horse(String name, String color, int birthYear) {
         this.name = name;
         this.color = color;
