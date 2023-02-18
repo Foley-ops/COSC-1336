@@ -1,3 +1,10 @@
+/******************************************************************************
+ Programmer: Nicholas Foley
+ Date: 02/16/2023
+ Lab 9
+ Instructor: Dr. Rafael Azuaje
+ College: Northeast Lakeview College
+ *******************************************************************************/
 public class Salesperson {
     private int id;
     private double sales;
