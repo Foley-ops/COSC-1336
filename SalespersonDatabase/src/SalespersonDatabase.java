@@ -1,27 +1,4 @@
-/*	In Chapter 8, you created a Salesperson class with fields for an ID number and sales values.
-Now, create an application that allows you to store an array that acts as a database of any number
-of Salesperson objects up to 20. While the user decides to continue, offer three options: to add a
-record to the database, to delete a record from the database, or to change a record in the database.
-Then proceed as follows:
-
-If the user selects the add option, issue an error message if the database is full. Otherwise, prompt
- the user for an ID number. If the ID number already exists in the database, issue an error message.
- Otherwise, prompt the user for a sales value and add the new record to the database.
-
-If the user selects the delete option, issue an error message if the database is empty.
-Otherwise, prompt the user for an ID number. If the ID number does not exist, issue an error message.
-Otherwise, do not access the record for any future processing.
-
-If the user selects the change option, issue an error message if the database is empty.
-Otherwise, prompt the user for an ID number. If the requested record does not exist, issue an error
-message. Otherwise, prompt the user for a new sales value and change the sales value for the record.
-After each option executes, display the updated database in ascending order by Salesperson ID number
-and prompt the user to select the next action. Save the application as SalespersonDatabase.java.
-*/
-
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.Scanner;
+import java.util.*;
 
 /******************************************************************************
  Programmer: Nicholas Foley
@@ -61,35 +38,32 @@ public class SalespersonDatabase {
     }
 
     public static void createArray() {
-        System.out.print("Enter the number of Salesperson objects to add (up to 20): ");
-        int numObjects = scan.nextInt();
-
-        // Check if the number of objects is valid
-        while (numObjects < 1 || numObjects > MAX_FACULTIES) {
-            System.out.println("Error: Invalid number of objects.");
+        int numObjects;
+        do {
             System.out.print("Enter the number of Salesperson objects to add (up to 20): ");
             numObjects = scan.nextInt();
-        }
+            if (numObjects < 1 || numObjects > MAX_FACULTIES) {
+                System.out.println("Error: Invalid number of objects.");
+            }
+        } while (numObjects < 1 || numObjects > MAX_FACULTIES);
 
-
-        // Create a new array with the given number of objects
         recordArray = new Salesperson[numObjects];
-        return;
     }
 
 
-    
+
+
+
     public static void addRecord() {
         if (recordArray.length == MAX_FACULTIES) {
             System.out.println("Error: Database is full.");
             return;
         }
-        
+
         // Prompt user for ID
         System.out.print("Enter an ID number: ");
         int id = scan.nextInt();
-        
-        // Check if ID exists
+
         // Check if ID exists
         for (int i = 0; i < recordArray.length; i++) {
             if (recordArray[i] != null && recordArray[i].getId() == id) {
@@ -98,17 +72,20 @@ public class SalespersonDatabase {
             }
         }
 
-        
         // Prompt user for sales value
         System.out.print("Enter a sales value:");
         double sales = scan.nextDouble();
-    
-        // Add new record
-        recordArray[recordArray.length - 1] = new Salesperson(id, sales);
 
-
+        // Find the first null element in the array and add the new record
+        for (int i = 0; i < recordArray.length; i++) {
+            if (recordArray[i] == null) {
+                recordArray[i] = new Salesperson(id, sales);
+                break;
+            }
+        }
     }
-    
+
+
     public static void deleteRecord() {
         if (recordArray.length == 0) {
             System.out.println("Error: Database is empty");
@@ -116,7 +93,7 @@ public class SalespersonDatabase {
             // prompt user for ID number
             System.out.println("Enter ID number of record to delete: ");
             int idNum = scan.nextInt();
-    
+
             // search through array for ID number
             boolean idFound = false;
             int index = 0;
@@ -127,20 +104,21 @@ public class SalespersonDatabase {
                     index++;
                 }
             }
-    
+
             // remove record from array if found, otherwise display error message
             if (idFound) {
                 for (int i = index; i < recordArray.length - 1; i++) {
                     recordArray[i] = recordArray[i + 1];
                 }
-                Salesperson[] tempArray = new Salesperson[recordArray.length];
-                System.arraycopy(recordArray, 0, tempArray, 0, recordArray.length - 1);
+                Salesperson[] tempArray = new Salesperson[recordArray.length - 1];
+                System.arraycopy(recordArray, 0, tempArray, 0, tempArray.length);
                 recordArray = tempArray;
             } else {
                 System.out.println("Error: ID number not found");
             }
         }
     }
+
     
     
     public static void changeRecord() {
@@ -174,21 +152,31 @@ public class SalespersonDatabase {
         recordArray[index].setSales(newSalesValue);
         
     }
-    
-    
+
+
     public static void displayRecords() {
-        // Sort the Salesperson array in ascending order by ID
-        Arrays.sort(recordArray, Comparator.comparingInt(Salesperson::getId));
-        
-        System.out.println("ID\tSales");
+        // Check for null elements in the array
+        boolean hasNull = false;
         for (int i = 0; i < recordArray.length; i++) {
-            if (recordArray[i] != null) {
-                System.out.println(recordArray[i].getId() + "\t" + recordArray[i].getSales());
+            if (recordArray[i] == null) {
+                hasNull = true;
+                break;
             }
         }
+        if (hasNull) {
+            System.out.println("Error: Database contains null elements");
+            return;
+        }
+
+        // Sort the Salesperson array in ascending order by ID
+        Arrays.sort(recordArray, Comparator.comparingInt(Salesperson::getId));
+
+        System.out.println("ID\tSales");
+        for (int i = 0; i < recordArray.length; i++) {
+            System.out.println(recordArray[i].getId() + "\t" + recordArray[i].getSales());
+        }
     }
-    
-    
+
     public static int displayMenu() {
         System.out.println("Salesperson Database");
         System.out.println("--------------------");
