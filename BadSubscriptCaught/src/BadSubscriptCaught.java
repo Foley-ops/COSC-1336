@@ -12,6 +12,9 @@ enters a number that is out of range. The catch block should also display an err
  *******************************************************************************/
 public class BadSubscriptCaught {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+
+        String[] array = { "Albert", "Billy", "Charles", "Daniel", "Elizabeth",
+                "Francine", "George", "Henry", "Igor", "Jacen"};
     }
+
 }
