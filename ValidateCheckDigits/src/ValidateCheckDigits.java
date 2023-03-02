@@ -10,8 +10,64 @@ last digit is equal to the sum of the first five digits divided by 10. For examp
  Instructor: Dr. Rafael Azuaje
  College: Northeast Lakeview
  *******************************************************************************/
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Scanner;
+
 public class ValidateCheckDigits {
+    
+    public static boolean isValidAccountNumber(String accountNumber) {
+        // check if the length of the string is exactly 6 characters
+        if (accountNumber.length() != 6) {
+            return false;
+        }
+        
+        // get the first five digits and compute their sum
+        int sum = 0;
+        for (int i = 0; i < 5; i++) {
+            char digitChar = accountNumber.charAt(i);
+            if (!Character.isDigit(digitChar)) {
+                return false;
+            }
+            int digit = Character.getNumericValue(digitChar);
+            sum += digit;
+        }
+        
+        // check if the last digit matches the remainder of sum divided by 10
+        char lastDigitChar = accountNumber.charAt(5);
+        if (!Character.isDigit(lastDigitChar)) {
+            return false;
+        }
+        int lastDigit = Character.getNumericValue(lastDigitChar);
+        return lastDigit == sum % 10;
+    }
+
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+        try {
+            // open the input and output files
+            File inputFile = new File("account_numbers.txt");
+            Scanner scanner = new Scanner(inputFile);
+            FileWriter writer = new FileWriter("valid_account_numbers.txt");
+            
+            // process each line in the input file
+            while (scanner.hasNextLine()) {
+                String accountNumber = scanner.nextLine();
+                if (isValidAccountNumber(accountNumber)) {
+                    writer.write(accountNumber + "\n");
+                }
+            }
+            
+            // close the input and output files
+            scanner.close();
+            writer.close();
+            
+            System.out.println("Done writing valid account numbers to file.");
+        } catch (FileNotFoundException e) {
+            System.err.println("Cannot find input file: " + e.getMessage());
+        } catch (IOException e) {
+            System.err.println("Error writing output file: " + e.getMessage());
+        }
     }
 }
