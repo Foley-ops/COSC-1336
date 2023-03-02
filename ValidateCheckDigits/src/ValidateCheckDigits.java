@@ -45,6 +45,9 @@ public class ValidateCheckDigits {
     }
 
     public static void main(String[] args) {
+        /*Be sure to add txt file to main folder and not SRC
+        IE: "C:\Users\Nick\COSC-1336\ValidateCheckDigits\account_numbers.txt"*/
+
         try {
             // open the input and output files
             File inputFile = new File("account_numbers.txt");
